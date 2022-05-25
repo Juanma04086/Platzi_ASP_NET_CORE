@@ -5,18 +5,17 @@ namespace Platzi_ASP_NET_CORE.Controllers
 {
     public class EscuelaController : Controller
     {
+        private EscuelaContext _context;
+
         public IActionResult Index()
         {
-            var escuela = new Escuela();
-            escuela.AñoDeCreación = 2005;
-            escuela.UniqueId = Guid.NewGuid().ToString();
-            escuela.Nombre =  " Platzi School";
-            escuela.Ciudad =  " Bogota";
-            escuela.Pais =  " Colombia";
-            escuela.Dirección = " Avda siempre viva";
-            escuela.TipoEscuela = TiposEscuela.Secundaria;
-                return View(escuela);
+            var escuela = _context.Escuelas.FirstOrDefault();
+            return View(escuela);
         }
-
+        public EscuelaController(EscuelaContext context)
+        {
+            _context = context;
+        }
     }
 }
+    
