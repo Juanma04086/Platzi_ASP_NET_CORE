@@ -4,6 +4,7 @@ using Platzi_ASP_NET_CORE.Models;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+object value = builder.HasKey((object EscuelaContext) => new { Escuela.EntityOneKey, Platzi_ASP_NET_CORE.Models.EscuelaContext.EntityTwoKey });
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<EscuelaContext>(options =>
 {
